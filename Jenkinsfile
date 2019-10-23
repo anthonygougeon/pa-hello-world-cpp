@@ -19,7 +19,7 @@ pipeline {
 
     post {
         always {
-            archiveArtifacts artifacts: 'build/main', fingerprint: true
+            archiveArtifacts artifacts: './main', fingerprint: true
         }
     }
 }
