@@ -12,12 +12,12 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh './gradlew build'
+                sh './main build'
             }
         }
         stage('Test') {
             steps {
-                sh './gradlew check'
+                sh './main check'
             }
         }
     }
