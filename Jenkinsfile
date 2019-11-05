@@ -7,19 +7,14 @@ node() {
 	sh "make"
 	sh "./main"
 }
-pipeline {
-    agent any
-    stages {
-        stage('Build') {
-            steps {
-                sh './main build'
-            }
-        }
+node {
+    stage('Build') {
+        sh 'make'
     }
-
-    post {
-        always {
-            archiveArtifacts artifacts: './main', fingerprint: true
-        }
-    }
+	stage('Checkout') {
+		checkout scm
+	}
+	stage('Archivage'){
+		archiveArtifacts artifacts: 'main', onlyIfSuccessful: true
+	}
 }
